@@ -34,6 +34,15 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
+      - uses: actions/cache@v2
+        with:
+          path: |
+              ~/.gradle/caches
+              ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+              ${{ runner.os }}-gradle-
+
       - name: Create folder
         if: always()
         run: mkdir apk
@@ -68,6 +77,12 @@ jobs:
               --ks keystore.jks --ks-pass "pass:${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" \
               --in "apk/release.apk" \
               --out "apk/ddg-signed.apk"
+
+      - name: Upload APK x86_64
+        uses: actions/upload-artifact@v2.3.1
+        with:
+          name: ddg-signed.apk
+          path: apk/ddg-signed.apk
       
       - name: Telegram Notify
         uses: appleboy/telegram-action@master
@@ -75,7 +90,7 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: Build Complete ddg Browser
-          document: apk/ddg-signed.apk
+          #document: apk/ddg-signed.apk
 
       # - name: ADS Preview Flows
       #   uses: mobile-dev-inc/action-maestro-cloud@v1.1.1
