@@ -83,6 +83,8 @@
             android:icon="${appIcon}"
             android:label="@string/appName"
             android:roundIcon="${appIconRound}"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:theme="@style/Theme.DuckDuckGo.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -196,111 +198,23 @@
         </activity-alias>
 
         <activity
-            android:name="com.duckduckgo.app.systemsearch.SystemSearchActivity"
-            android:autoRemoveFromRecents="true"
-            android:documentLaunchMode="intoExisting"
-            android:exported="true"
-            android:label="@string/appName"
-            android:launchMode="singleTask"
-            android:stateNotNeeded="true">
-
-            <!-- Allow app to be default assistant -->
-            <intent-filter>
-                <action android:name="android.intent.action.ASSIST" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-
-            <!-- Required to allow the browser to be launched externally, ensuring it is ready to allow users to search immediately -->
-            <intent-filter>
-                <action android:name="com.duckduckgo.mobile.android.NEW_SEARCH" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-
-        </activity>
-
-        <activity
             android:name="com.duckduckgo.app.onboarding.ui.OnboardingActivity"
             android:exported="false"
             android:label="@string/appName"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:theme="@style/Theme.DuckDuckGo.Light" />
 
         <activity
-            android:name=".BrowserActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true"
-            android:label="@string/appDescription"
-            android:launchMode="singleTask"
-            android:windowSoftInputMode="adjustResize|stateHidden">
-
-            <!-- Allows app to become default browser -->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.BROWSABLE" />
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <data android:scheme="https" />
-                <data android:scheme="http" />
-            </intent-filter>
-
-            <!-- Allows app to handle the specified MIME types that use the specified schemes, and to become the default handler for them -->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.BROWSABLE" />
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <data android:scheme="https" />
-                <data android:scheme="http" />
-
-                <data android:mimeType="text/html" />
-                <data android:mimeType="text/plain" />
-                <data android:mimeType="application/xhtml+xml" />
-            </intent-filter>
-
-            <!-- Allows apps to consume links and text shared from other apps e.g chrome -->
-            <intent-filter>
-                <action android:name="android.intent.action.SEND" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="text/plain" />
-            </intent-filter>
-
-            <!-- Allow app to be opened using an NFC tag -->
-            <intent-filter>
-                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="https" />
-                <data android:scheme="http" />
-            </intent-filter>
-
-        </activity>
-
-        <activity
-            android:name="com.duckduckgo.app.SelectedTextSearchActivity"
-            android:exported="true"
-            android:label="@string/systemTextSearchMessage">
-            <intent-filter>
-                <action android:name="android.intent.action.PROCESS_TEXT" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="text/plain" />
-            </intent-filter>
-
-            <!-- Allow app to respond to "web search" requests from system -->
-            <intent-filter>
-                <action android:name="android.intent.action.WEB_SEARCH" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity
             android:name="com.duckduckgo.app.tabs.ui.TabSwitcherActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="false"
             android:label="@string/tabActivityTitle" />
         <activity
             android:name="com.duckduckgo.app.settings.SettingsActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="true"
             android:label="@string/settingsActivityTitle"
             android:parentActivityName=".BrowserActivity">
@@ -310,16 +224,21 @@
         </activity>
         <activity
             android:name="com.duckduckgo.app.feedback.ui.common.FeedbackActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="false"
             android:label="@string/feedbackActivityTitle"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="com.duckduckgo.app.brokensite.BrokenSiteActivity"
+            android:excludeFromRecents="true"
             android:exported="false"
             android:label="@string/brokenSiteHeading"
             android:parentActivityName=".BrowserActivity" />
         <activity
             android:name="com.duckduckgo.app.survey.ui.SurveyActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false"
             android:label="@string/surveyActivityTitle"
@@ -327,60 +246,83 @@
             android:theme="@style/Theme.DuckDuckGo.Survey" />
         <activity
             android:name="com.duckduckgo.app.widget.ui.AddWidgetInstructionsActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="false"
             android:label="@string/addWidgetInstructionsActivityTitle"
             android:theme="@style/Theme.DuckDuckGo.Survey" />
         <activity
             android:name="com.duckduckgo.app.about.AboutDuckDuckGoActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="false"
             android:label="@string/aboutActivityTitle"
             android:parentActivityName="com.duckduckgo.app.settings.SettingsActivity" />
         <activity
             android:name="com.duckduckgo.app.bookmarks.ui.BookmarksActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="false"
             android:label="@string/bookmarksActivityTitle"
             android:parentActivityName=".BrowserActivity" />
         <activity
             android:name="com.duckduckgo.app.fire.fireproofwebsite.ui.FireproofWebsitesActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="false"
             android:label="@string/fireproofWebsitesActivityTitle"
             android:parentActivityName="com.duckduckgo.app.settings.SettingsActivity" />
         <activity
             android:name="com.duckduckgo.app.sitepermissions.SitePermissionsActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="false"
             android:label="@string/settingsSitePermissions"
             android:parentActivityName="com.duckduckgo.app.settings.SettingsActivity" />
         <activity
             android:name="com.duckduckgo.app.sitepermissions.permissionsperwebsite.PermissionsPerWebsiteActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="false"
             android:parentActivityName="com.duckduckgo.app.sitepermissions.SitePermissionsActivity" />
         <activity
             android:name="com.duckduckgo.app.fire.FireActivity"
+            android:excludeFromRecents="true"
             android:exported="false"
             android:theme="@style/Theme.DuckDuckGo.Dark"
             android:process="@string/fireProcessName" />
         <activity
             android:name="com.duckduckgo.app.icon.ui.ChangeIconActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="false"
             android:label="@string/changeIconActivityTitle"
             android:parentActivityName="com.duckduckgo.app.settings.SettingsActivity" />
         <activity
             android:name="com.duckduckgo.app.privacy.ui.WhitelistActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="false"
             android:label="@string/whitelistActivityTitle"
             android:parentActivityName="com.duckduckgo.app.settings.SettingsActivity" />
         <activity
             android:name="com.duckduckgo.app.globalprivacycontrol.ui.GlobalPrivacyControlActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="false"
             android:label="@string/globalPrivacyControlActivityTitle"
             android:parentActivityName="com.duckduckgo.app.settings.SettingsActivity" />
         <activity
             android:name="com.duckduckgo.app.accessibility.AccessibilityActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="false"
             android:label="@string/accessibilityActivityTitle"
             android:parentActivityName="com.duckduckgo.app.settings.SettingsActivity" />
         <activity
             android:name="com.duckduckgo.app.email.ui.EmailProtectionUnsupportedActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="false"
             android:label="@string/emailProtectionActivityTitle"
             android:screenOrientation="portrait"
@@ -388,15 +330,21 @@
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name="com.duckduckgo.app.settings.FireAnimationActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="false"
             android:parentActivityName="com.duckduckgo.app.settings.SettingsActivity"
             android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
         <activity
             android:name="com.duckduckgo.app.browser.webview.WebViewActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="false"
             android:parentActivityName="com.duckduckgo.app.settings.SettingsActivity" />
         <activity
             android:name="com.duckduckgo.app.WidgetThemeConfiguration"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="false"
             android:label="@string/widgetConfigurationActivityTitle"
             android:theme="@style/Theme.DuckDuckGo.Light">
@@ -407,34 +355,46 @@
 
         <activity
             android:name="com.duckduckgo.app.bookmarks.ui.bookmarkfolders.BookmarkFoldersActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="false"
             android:label="@string/folderLocationTitle"
             android:parentActivityName="com.duckduckgo.app.bookmarks.ui.BookmarksActivity" />
 
         <activity
             android:name="com.duckduckgo.voice.impl.listeningmode.VoiceSearchActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="false"
             android:label="@string/voiceSearchTitle"
             android:parentActivityName=".BrowserActivity" />
 
         <activity
             android:name="com.duckduckgo.app.downloads.DownloadsActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="false"
             android:label="@string/downloadsActivityTitle"
             android:parentActivityName=".BrowserActivity" />
 
         <service
             android:name="com.duckduckgo.app.job.AppConfigurationJobService"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <service
             android:name="com.duckduckgo.widget.FavoritesWidgetService"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="false"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <service
             android:name="com.duckduckgo.widget.EmptyFavoritesWidgetService"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:exported="false"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
