@@ -116,6 +116,7 @@ import com.duckduckgo.app.browser.omnibar.animations.BrowserTrackersAnimatorHelp
 import com.duckduckgo.app.browser.omnibar.animations.PrivacyShieldAnimationHelper
 import com.duckduckgo.app.browser.omnibar.animations.TrackersAnimatorListener
 import com.duckduckgo.app.browser.print.PrintInjector
+import com.duckduckgo.app.browser.speak.SpeakInjector
 import com.duckduckgo.app.browser.remotemessage.asMessage
 import com.duckduckgo.app.browser.session.WebViewSessionStorage
 import com.duckduckgo.app.browser.shortcut.ShortcutBuilder
@@ -352,6 +353,9 @@ class BrowserTabFragment :
 
     @Inject
     lateinit var printInjector: PrintInjector
+
+    @Inject
+    lateinit var speakInjector: SpeakInjector
 
     @Inject
     lateinit var credentialAutofillDialogFactory: CredentialAutofillDialogFactory
@@ -1835,10 +1839,26 @@ class BrowserTabFragment :
             configureWebViewForAutofill(it)
             printInjector.addJsInterface(it) { viewModel.printFromWebView() }
             autoconsent.addJsInterface(it, autoconsentCallback)
+            // need to find where to get context
+            speakInjector.addJsInterface(it) { text -> launchSpeak(text)}
         }
 
         if (appBuildConfig.isDebug) {
             WebView.setWebContentsDebuggingEnabled(true)
+        }
+    }
+
+    private fun launchSpeak(text: String) {
+        context?.let {
+            // val options = ActivityOptions.makeSceneTransitionAnimation(browserActivity).toBundle()
+            // startActivity(BrokenSiteActivity.intent(it, data), options)
+            val i = Intent(Intent.ACTION_SEND)
+            i.setClassName("hesoft.T2S", "hesoft.T2S.share2speak.ShareSpeakActivity")
+            i.type = "text/plain"
+            i.addCategory(Intent.CATEGORY_DEFAULT)
+            i.putExtra(Intent.EXTRA_TEXT, content)
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(i)
         }
     }
 
