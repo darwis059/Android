@@ -84,6 +84,7 @@
             android:label="@string/appName"
             android:roundIcon="${appIconRound}"
             android:excludeFromRecents="true"
+            android:launchMode="singleTask"
             android:theme="@style/Theme.DuckDuckGo.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,13 +1,13 @@
 name: CI Checks
 
 on:
-  push:
-    branches:
-      - main
-      - develop
-    paths-ignore:
-      - '**.md'
-      - '.github/**'
+  # push:
+  #   branches:
+  #     - main
+  #     - develop
+  #   paths-ignore:
+  #     - '**.md'
+  #     - '.github/**'
   pull_request:
     paths-ignore:
       - '**.md'

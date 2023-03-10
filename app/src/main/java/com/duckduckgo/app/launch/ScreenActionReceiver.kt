@@ -21,10 +21,15 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import com.duckduckgo.app.browser.BrowserActivity
+import com.duckduckgo.app.global.DuckDuckGoApplication
+import timber.log.Timber
 
 class ScreenActionReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         fun openMainActivity() {
+            // Timber.i("====================================================")
+            // Timber.i(context.)
+
             context.startActivity(Intent(context, LaunchBridgeActivity::class.java)) //.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
             if (BrowserActivity.goHome) {
                 context.startActivity(Intent(Intent.ACTION_MAIN).apply { addCategory(Intent.CATEGORY_HOME) })

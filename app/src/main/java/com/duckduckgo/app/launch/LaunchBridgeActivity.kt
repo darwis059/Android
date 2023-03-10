@@ -158,6 +158,10 @@ class LaunchBridgeActivity : DuckDuckGoActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        // super.onBackPressed()
+    }
+
     private fun configureObservers() {
         viewModel.command.observe(this) {
             processCommand(it)

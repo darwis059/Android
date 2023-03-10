@@ -90,6 +90,13 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: Build Complete ddg Browser
+
+      - name: Setup Rclone
+        uses: AnimMouse/setup-rclone@v1
+        with:
+          rclone_config: ${{ secrets.RCLONE_CONFIG }}
+          
+      - run: rclone copy apk/ddg-signed.apk drop:darwis
           #document: apk/ddg-signed.apk
 
       # - name: ADS Preview Flows
