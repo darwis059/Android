@@ -84,7 +84,6 @@
             android:label="@string/appName"
             android:roundIcon="${appIconRound}"
             android:excludeFromRecents="true"
-            android:noHistory="true"
             android:theme="@style/Theme.DuckDuckGo.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -202,7 +201,6 @@
             android:exported="false"
             android:label="@string/appName"
             android:excludeFromRecents="true"
-            android:noHistory="true"
             android:theme="@style/Theme.DuckDuckGo.Light" />
 
         <activity
@@ -212,7 +210,6 @@
             android:label="@string/appDescription"
             android:launchMode="singleTask"
             android:excludeFromRecents="true"
-            android:noHistory="true"
             android:windowSoftInputMode="adjustResize|stateHidden">
         </activity>
 
