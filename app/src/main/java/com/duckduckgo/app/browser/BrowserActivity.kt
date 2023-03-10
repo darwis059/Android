@@ -25,6 +25,7 @@ import android.os.Handler
 import android.os.Message
 import android.view.KeyEvent
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.lifecycleScope
@@ -149,6 +150,7 @@ open class BrowserActivity : DuckDuckGoActivity() {
 
         super.onCreate(savedInstanceState = newInstanceState, daggerInject = false)
         toolbarMockupBinding = IncludeOmnibarToolbarMockupBinding.bind(binding.root)
+        window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
         setContentView(binding.root)
         viewModel.viewState.observe(this) {
             renderer.renderBrowserViewState(it)
@@ -518,7 +520,8 @@ open class BrowserActivity : DuckDuckGoActivity() {
             intent.putExtra(NOTIFY_DATA_CLEARED_EXTRA, notifyDataCleared)
             return intent
         }
-
+        var prevAct: String? = null
+        var goHome: Boolean = true
         const val FAVORITES_ONBOARDING_EXTRA = "FAVORITES_ONBOARDING_EXTRA"
         const val NEW_SEARCH_EXTRA = "NEW_SEARCH_EXTRA"
         const val PERFORM_FIRE_ON_ENTRY_EXTRA = "PERFORM_FIRE_ON_ENTRY_EXTRA"

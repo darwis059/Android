@@ -15,11 +15,174 @@
   -->
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.duckduckgo.app.launch.LaunchBridgeActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
+            android:text="Button"
+            android:textColor="#00FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
+            android:textColor="#00FFFFFF"
+            android:text="Button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
+            android:text="Loading ..."
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#00FFFFFF"
+            android:textColor="#80353535"
+            android:text="."
+            android:onClick="btnClicked"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/btn2"
+            app:layout_constraintStart_toStartOf="@id/btn2"
+            app:layout_constraintTop_toBottomOf="@+id/btn2" />
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#00FFFFFF"
+            android:textColor="#80353535"
+            android:text="."
+            android:onClick="btnClicked"
+            app:layout_constraintBottom_toTopOf="@+id/btn0"
+            app:layout_constraintEnd_toStartOf="@id/btn2"
+            app:layout_constraintStart_toStartOf="@id/btn7"
+            app:layout_constraintTop_toBottomOf="@+id/btn4" />
+
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#00FFFFFF"
+            android:textColor="#80353535"
+            android:text="."
+            android:onClick="btnClicked"
+            app:layout_constraintBottom_toTopOf="@+id/btn0"
+            app:layout_constraintEnd_toStartOf="@+id/btn3"
+            app:layout_constraintStart_toEndOf="@+id/btn1"
+            app:layout_constraintTop_toBottomOf="@+id/btn5" />
+        <Button
+            android:id="@+id/btn3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#00FFFFFF"
+            android:textColor="#80353535"
+            android:text="."
+            android:onClick="btnClicked"
+            app:layout_constraintBottom_toTopOf="@+id/btn0"
+            app:layout_constraintEnd_toEndOf="@id/btn9"
+            app:layout_constraintStart_toEndOf="@id/btn2"
+            app:layout_constraintTop_toBottomOf="@+id/btn6" />
+        <Button
+            android:id="@+id/btn4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#00FFFFFF"
+            android:textColor="#80353535"
+            android:text="."
+            android:onClick="btnClicked"
+            app:layout_constraintBottom_toTopOf="@id/btn1"
+            app:layout_constraintEnd_toStartOf="@id/btn5"
+            app:layout_constraintStart_toStartOf="@id/btn7"
+            app:layout_constraintTop_toBottomOf="@+id/btn7" />
+
+        <Button
+            android:id="@+id/btn5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#00FFFFFF"
+            android:textColor="#80353535"
+            android:text="."
+            android:onClick="btnClicked"
+            app:layout_constraintBottom_toTopOf="@id/btn2"
+            app:layout_constraintEnd_toStartOf="@id/btn6"
+            app:layout_constraintStart_toEndOf="@id/btn4"
+            app:layout_constraintTop_toBottomOf="@+id/btn8" />
+        <Button
+            android:id="@+id/btn6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#00FFFFFF"
+            android:textColor="#80353535"
+            android:text="."
+            android:onClick="btnClicked"
+            app:layout_constraintBottom_toTopOf="@+id/btn3"
+            app:layout_constraintEnd_toEndOf="@id/btn9"
+            app:layout_constraintStart_toEndOf="@+id/btn5"
+            app:layout_constraintTop_toBottomOf="@+id/btn9" />
+
+        <Button
+            android:id="@+id/btn7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#00FFFFFF"
+            android:textColor="#80353535"
+            android:text="."
+            android:onClick="btnClicked"
+            app:layout_constraintBottom_toTopOf="@id/btn4"
+            app:layout_constraintEnd_toStartOf="@+id/btn8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btn8" />
+
+        <Button
+            android:id="@+id/btn8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="24dp"
+            android:background="#00FFFFFF"
+            android:textColor="#80353535"
+            android:onClick="btnClicked"
+            android:text="."
+            app:layout_constraintBottom_toTopOf="@id/btn5"
+            app:layout_constraintEnd_toStartOf="@+id/btn9"
+            app:layout_constraintStart_toEndOf="@+id/btn7"
+            app:layout_constraintTop_toBottomOf="@id/textView" />
+        <Button
+            android:id="@+id/btn9"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#00FFFFFF"
+            android:textColor="#80353535"
+            android:text="."
+            android:onClick="btnClicked"
+            app:layout_constraintBottom_toTopOf="@id/btn6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn8"
+            app:layout_constraintTop_toTopOf="@id/btn8" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
 
