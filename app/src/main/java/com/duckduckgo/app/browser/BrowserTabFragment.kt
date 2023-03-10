@@ -1852,11 +1852,12 @@ class BrowserTabFragment :
         context?.let {
             // val options = ActivityOptions.makeSceneTransitionAnimation(browserActivity).toBundle()
             // startActivity(BrokenSiteActivity.intent(it, data), options)
+            Timber.w("drw: Launching T2S")
             val i = Intent(Intent.ACTION_SEND)
             i.setClassName("hesoft.T2S", "hesoft.T2S.share2speak.ShareSpeakActivity")
             i.type = "text/plain"
             i.addCategory(Intent.CATEGORY_DEFAULT)
-            i.putExtra(Intent.EXTRA_TEXT, content)
+            i.putExtra(Intent.EXTRA_TEXT, text)
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(i)
         }

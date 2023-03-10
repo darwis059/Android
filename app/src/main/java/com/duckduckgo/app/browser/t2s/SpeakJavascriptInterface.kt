@@ -19,6 +19,6 @@ class SpeakJavascriptInterface(private val speakText: (text: String) -> Unit) {
     }
 
     companion object {
-        const val JAVASCRIPT_INTERFACE_NAME = "Speak"
+        const val JAVASCRIPT_INTERFACE_NAME = "Android"
     }
 }
