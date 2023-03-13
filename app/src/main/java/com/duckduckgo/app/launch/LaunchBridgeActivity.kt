@@ -61,7 +61,7 @@ class LaunchBridgeActivity : DuckDuckGoActivity() {
         val screenActionReceiver = ScreenActionReceiver()
         registerReceiver(screenActionReceiver, screenActionReceiver.getFilter())
         am = getSystemService(AUDIO_SERVICE) as AudioManager
-        am.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_VIBRATE)
+        // am.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_VIBRATE)
         txt = findViewById(R.id.textView)
 
         txt.setOnClickListener {
